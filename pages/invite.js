@@ -14,7 +14,7 @@ export default function Invite() {
     
     try {
       // REPLACE with your Google Apps Script Web App URL
-      const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL";
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbbBGgUusSBr1COhP9vymPwasGjKLwz9Igrpgewl493QLO2oBIs9CutQhL86J-nr0LiQ/exec";
       
       const response = await fetch(SCRIPT_URL, {
         method: 'POST',
