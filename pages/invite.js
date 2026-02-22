@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 // Replace with your URL from Google Apps Script (ends in /exec)
-const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpLH994-0GMJv7pyyGGaif3o-2g2j87UQsiXgr21v9zmoK4AbuXenPVvN65L7pW_85rA/exec";
 
 export default function InviteGate() {
   const [lastName, setLastName] = useState('');
