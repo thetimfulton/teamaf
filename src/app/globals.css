@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── Custom fonts ── */
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2")
+    format("woff2");
+}
+
+/* ── Wedding palette (Pantone → hex) ── */
+/* Lucent White  #F4F7FF  — backgrounds, breathing room            */
+/* Meringue      #F6E299  — accents, highlights, hover states       */
+/* Spumante      #D7C1A3  — warm mid-tone, cards, borders           */
+/* Affenpinscher #272C2D  — primary text, dark sections             */
+/* Burgundy      #64313E  — hero color, CTAs, headings              */
+
+@theme inline {
+  /* shadcn plumbing */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* ── Wedding palette tokens ── */
+  --color-lucent: #F4F7FF;
+  --color-meringue: #F6E299;
+  --color-spumante: #D7C1A3;
+  --color-affenpinscher: #272C2D;
+  --color-burgundy: #64313E;
+}
+
+:root {
+  /* ── Map shadcn semantic tokens to wedding palette ── */
+  --background: #F4F7FF;
+  --foreground: #272C2D;
+  --card: #FFFFFF;
+  --card-foreground: #272C2D;
+  --popover: #FFFFFF;
+  --popover-foreground: #272C2D;
+  --primary: #64313E;
+  --primary-foreground: #F4F7FF;
+  --secondary: #D7C1A3;
+  --secondary-foreground: #272C2D;
+  --muted: #F0EBE4;
+  --muted-foreground: #5A5558;
+  --accent: #F6E299;
+  --accent-foreground: #272C2D;
+  --destructive: #B91C1C;
+  --border: #D7C1A3;
+  --input: #D7C1A3;
+  --ring: #64313E;
+  --chart-1: #64313E;
+  --chart-2: #D7C1A3;
+  --chart-3: #F6E299;
+  --chart-4: #272C2D;
+  --chart-5: #F4F7FF;
+  --radius: 0.5rem;
+
+  --font-heading: "Cormorant Garamond", "Georgia", serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  /* ── Heading defaults ── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-burgundy);
+  }
+}
+
+/* ── Utility classes for the "Black Tie, Open Bar" design system ── */
+@layer utilities {
+  .text-editorial {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .bg-dark-section {
+    background-color: var(--color-affenpinscher);
+    color: var(--color-lucent);
+  }
+
+  .bg-burgundy-section {
+    background-color: var(--color-burgundy);
+    color: var(--color-lucent);
+  }
+
+  /* slight rotation for "mildly chaotic" elements */
+  .tilt-1 { transform: rotate(-1.5deg); }
+  .tilt-2 { transform: rotate(1.2deg); }
+  .tilt-3 { transform: rotate(-0.8deg); }
+}

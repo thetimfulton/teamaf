@@ -1,0 +1,3 @@
+# #teamAF — private wedding website
+User-agent: *
+Disallow: /
