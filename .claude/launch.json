@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "teamaf-preview",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["/tmp/teamaf-preview/node_modules/.bin/next", "dev", "--port", "3003"],
-      "port": 3003
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3003,
+      "autoPort": true
     }
   ]
 }
