@@ -49,7 +49,7 @@ export default function Home() {
             Tim &amp; Stef
           </h1>
 
-          <p className="mt-4 text-sm font-sans uppercase tracking-[0.3em] text-spumante/70">
+          <p className="mt-4 text-sm font-sans uppercase tracking-[0.3em] text-spumante">
             Park of Roses &middot; Columbus, Ohio
           </p>
 

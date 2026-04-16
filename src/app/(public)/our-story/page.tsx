@@ -73,7 +73,7 @@ export default function OurStoryPage() {
           </p>
           <Link
             href="/rsvp"
-            className="mt-10 inline-block font-sans text-lg text-meringue hover:text-meringue/80 transition-colors duration-200"
+            className="mt-10 inline-flex items-center justify-center min-h-[44px] font-sans text-lg text-meringue hover:text-meringue/80 transition-colors duration-200"
           >
             Join us &rarr;
           </Link>

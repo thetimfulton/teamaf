@@ -25,7 +25,7 @@ export function StorySection({
       role="img"
       aria-label={`Photo — ${heading}`}
     >
-      <span className="text-spumante/60 text-sm font-sans text-center px-4">
+      <span className="text-muted-foreground text-sm font-sans text-center px-4">
         Photo — {heading}
       </span>
       {/* TODO: Replace with <Image src="..." alt="..." fill className="object-cover" /> */}

@@ -120,7 +120,7 @@ export function Navigation() {
         {/* Mobile hamburger */}
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-sm p-2 text-lucent hover:text-meringue transition-colors md:hidden"
+          className="inline-flex items-center justify-center rounded-sm min-h-[44px] min-w-[44px] p-2 text-lucent hover:text-meringue transition-colors md:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           onClick={() => setMobileOpen((prev) => !prev)}
@@ -156,7 +156,7 @@ export function Navigation() {
           </Link>
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-sm p-2 text-lucent hover:text-meringue transition-colors"
+            className="inline-flex items-center justify-center rounded-sm min-h-[44px] min-w-[44px] p-2 text-lucent hover:text-meringue transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             <span className="sr-only">Close menu</span>

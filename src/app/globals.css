@@ -5,14 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ── Custom fonts ── */
-@font-face {
-  font-family: "Cormorant Garamond";
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2")
-    format("woff2");
-}
+/* Cormorant Garamond self-hosted via next/font/google in layout.tsx */
 
 /* ── Wedding palette (Pantone → hex) ── */
 /* Lucent White  #F4F7FF  — backgrounds, breathing room            */
@@ -100,7 +93,7 @@
   --chart-5: #F4F7FF;
   --radius: 0.5rem;
 
-  --font-heading: "Cormorant Garamond", "Georgia", serif;
+  --font-heading-fallback: var(--font-heading), "Georgia", serif;
 }
 
 @layer base {
@@ -114,9 +107,21 @@
     @apply font-sans;
   }
 
+  /* ── Focus states — visible on both light and dark backgrounds ── */
+  :focus-visible {
+    outline: 2px solid var(--color-burgundy);
+    outline-offset: 2px;
+  }
+  .bg-dark-section :focus-visible,
+  .bg-burgundy-section :focus-visible,
+  .bg-affenpinscher :focus-visible,
+  nav :focus-visible {
+    outline-color: var(--color-meringue);
+  }
+
   /* ── Heading defaults ── */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading-fallback);
     color: var(--color-burgundy);
   }
 }
@@ -124,7 +129,7 @@
 /* ── Utility classes for the "Black Tie, Open Bar" design system ── */
 @layer utilities {
   .text-editorial {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading-fallback);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.1;
@@ -140,8 +145,22 @@
     color: var(--color-lucent);
   }
 
-  /* slight rotation for "mildly chaotic" elements */
+  /* slight rotation for "mildly chaotic" elements
+     All usages in markup use md: prefix (e.g., md:tilt-1) so
+     rotation only applies at ≥768px via Tailwind's responsive variant. */
   .tilt-1 { transform: rotate(-1.5deg); }
   .tilt-2 { transform: rotate(1.2deg); }
   .tilt-3 { transform: rotate(-0.8deg); }
+}
+
+/* ── Reduced motion: disable animations & transitions ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

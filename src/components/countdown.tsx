@@ -99,9 +99,15 @@ export function Countdown() {
   }, []);
 
   // Tick every second if showing seconds, otherwise static
+  // Respects prefers-reduced-motion by not ticking
   useEffect(() => {
     if (hasPassed) return;
     if (mode.unit !== "seconds") return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
 
     const interval = setInterval(() => {
       const ms = getTimeLeft();

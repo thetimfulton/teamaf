@@ -168,7 +168,7 @@ export default function EventsPage() {
         </p>
         <Link
           href="/rsvp"
-          className="mt-6 inline-block bg-burgundy text-lucent font-sans font-medium text-sm px-8 py-3 rounded-lg hover:bg-burgundy/90 transition-colors duration-200"
+          className="mt-6 inline-flex items-center justify-center min-h-[44px] bg-burgundy text-lucent font-sans font-medium text-sm px-8 py-3 rounded-lg hover:bg-burgundy/90 transition-colors duration-200"
         >
           Find Your Invitation
         </Link>
