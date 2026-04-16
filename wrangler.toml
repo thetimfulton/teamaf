@@ -13,6 +13,8 @@ NEXT_PUBLIC_SUPABASE_URL = "https://ujmwgtamdxeeezubouca.supabase.co"
 NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqbXdndGFtZHhlZWV6dWJvdWNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyODMwMTMsImV4cCI6MjA5MTg1OTAxM30.oz1k46pKHm68FUJp8exkbyb7k2IRUPDYqGiUqccqTZI"
 NEXT_PUBLIC_SITE_URL = "https://teamaf.wedding"
 
+ADMIN_EMAILS = "tim@timfulton.com"
+
 # Secrets (set after first deploy via `npx wrangler secret put`):
 #   SUPABASE_SERVICE_ROLE_KEY
 #   BREVO_API_KEY
