@@ -15,3 +15,5 @@ NEXT_PUBLIC_SITE_URL = "https://teamaf.wedding"
 # Secrets (set after first deploy via `npx wrangler secret put`):
 #   SUPABASE_SERVICE_ROLE_KEY
 #   BREVO_API_KEY
+#   GUEST_SESSION_SECRET
+#   RSVP_CUTOFF_DATE

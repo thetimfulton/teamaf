@@ -77,3 +77,23 @@ export interface EmailLog {
   brevo_message_id: string | null;
   status: EmailStatus;
 }
+
+/* ── Phase 3: RSVP flow types ── */
+
+export interface GuestLookupResult {
+  id: string;
+  name: string;
+  email: string | null;
+  cohort: Cohort;
+  match_type: "email" | "exact_name" | "fuzzy";
+}
+
+export interface RsvpEventData {
+  event: Event;
+  existingRsvp: Rsvp | null;
+}
+
+export interface GuestRsvpData {
+  guest: Guest;
+  events: RsvpEventData[];
+}
