@@ -96,6 +96,29 @@ export interface Itinerary {
   days: ItineraryDay[];
 }
 
+/* ── Phase 5: Activity Log ── */
+
+export type ActivityType =
+  | "rsvp_submitted"
+  | "rsvp_updated"
+  | "guest_created"
+  | "guest_updated"
+  | "guest_deleted"
+  | "guest_imported"
+  | "event_updated"
+  | "email_sent"
+  | "email_broadcast";
+
+export interface ActivityLog {
+  id: string;
+  type: ActivityType;
+  actor: string;
+  subject_type: string | null;
+  subject_id: string | null;
+  details: Record<string, unknown>;
+  created_at: string;
+}
+
 /* ── Phase 3: RSVP flow types ── */
 
 export interface GuestLookupResult {

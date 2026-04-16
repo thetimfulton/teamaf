@@ -20,6 +20,7 @@ export const TEMPLATES = {
   REMINDER_2_WEEKS: 3, // 2-week reminder — Phase 4
   REMINDER_3_DAYS: 4, // 3-day reminder with weather — Phase 4
   EVENT_UPDATE: 5, // Event details changed — Phase 4
+  ADMIN_BROADCAST: 6, // Custom admin broadcast — Phase 5
 } as const;
 
 interface SendEmailParams {

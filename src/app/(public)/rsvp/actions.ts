@@ -17,6 +17,7 @@ import {
 } from "@/lib/validations/rsvp";
 import { sendTransactionalEmail, TEMPLATES } from "@/lib/brevo";
 import { generateSignedUrl } from "@/lib/itinerary/signed-url";
+import { logActivity } from "@/lib/activity";
 import type {
   Guest,
   Event,
@@ -310,6 +311,20 @@ export async function submitRsvp(
       console.error("[RSVP] Email send error:", err);
     });
   }
+
+  // Log activity
+  const hasExisting = upsertRows.length > 0; // simplified — always log as submitted
+  logActivity({
+    type: "rsvp_submitted",
+    actor: `guest:${guestId}`,
+    subjectType: "guest",
+    subjectId: guestId,
+    details: {
+      guestName: guest.name,
+      accepted: responses.filter((r) => r.status === "accepted").length,
+      declined: responses.filter((r) => r.status === "declined").length,
+    },
+  }).catch(() => {});
 
   return { success: true, data: { guestName: guest.name } };
 }
