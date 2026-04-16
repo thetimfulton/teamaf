@@ -67,8 +67,10 @@ INSERT INTO event_cohorts (event_id, cohort) VALUES
 ('a0000000-0000-0000-0000-000000000001', 'wedding_party'),
 ('a0000000-0000-0000-0000-000000000001', 'immediate_family');
 
--- Welcome Event → C (out-of-town guests)
+-- Welcome Event → A (wedding party) + B (immediate family) + C (out-of-town)
 INSERT INTO event_cohorts (event_id, cohort) VALUES
+('a0000000-0000-0000-0000-000000000002', 'wedding_party'),
+('a0000000-0000-0000-0000-000000000002', 'immediate_family'),
 ('a0000000-0000-0000-0000-000000000002', 'out_of_town');
 
 -- Ceremony → ALL cohorts

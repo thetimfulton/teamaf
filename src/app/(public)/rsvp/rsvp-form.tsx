@@ -172,6 +172,8 @@ export function RsvpForm({ data, onSubmitted }: RsvpFormProps) {
                 <div className="flex gap-3">
                   <button
                     type="button"
+                    aria-label={`Attending ${event.name}`}
+                    aria-pressed={isAccepted}
                     onClick={() =>
                       updateResponse(event.id, { status: "accepted" })
                     }
@@ -186,6 +188,8 @@ export function RsvpForm({ data, onSubmitted }: RsvpFormProps) {
                   </button>
                   <button
                     type="button"
+                    aria-label={`Decline ${event.name}`}
+                    aria-pressed={isDeclined}
                     onClick={() =>
                       updateResponse(event.id, {
                         status: "declined",

@@ -5,8 +5,10 @@
    All database writes go through here.
    ────────────────────────────────────────────── */
 
+import { headers } from "next/headers";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { setGuestCookie, getGuestFromCookie } from "@/lib/session";
+import { checkRateLimit } from "@/lib/rate-limit";
 import {
   lookupSchema,
   selectCandidateSchema,
@@ -39,6 +41,17 @@ type LookupResult =
 export async function lookupGuest(
   searchText: string
 ): Promise<ActionResult<LookupResult>> {
+  // Rate limit: 10 lookups/minute per IP
+  const hdrs = await headers();
+  const ip = hdrs.get("cf-connecting-ip") ?? hdrs.get("x-forwarded-for") ?? "unknown";
+  const limit = checkRateLimit(ip);
+  if (!limit.allowed) {
+    return {
+      success: false,
+      error: "You\u2019re searching too fast. Please wait a moment and try again.",
+    };
+  }
+
   const parsed = lookupSchema.safeParse({ searchText });
   if (!parsed.success) {
     return { success: false, error: parsed.error.errors[0].message };
@@ -283,6 +296,7 @@ export async function submitRsvp(
           guest_id: guestId,
           template: "RSVP_CONFIRMATION",
           brevo_message_id: messageId,
+          sent_at: new Date().toISOString(),
           status: "sent",
         });
       }
