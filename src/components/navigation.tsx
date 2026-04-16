@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/travel", label: "Travel" },
   { href: "/registry", label: "Registry" },
   { href: "/faq", label: "FAQ" },
+  { href: "/itinerary", label: "My Itinerary" },
 ] as const;
 
 export function Navigation() {

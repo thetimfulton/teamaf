@@ -16,6 +16,7 @@ import {
   type RsvpSubmission,
 } from "@/lib/validations/rsvp";
 import { sendTransactionalEmail, TEMPLATES } from "@/lib/brevo";
+import { generateSignedUrl } from "@/lib/itinerary/signed-url";
 import type {
   Guest,
   Event,
@@ -282,6 +283,10 @@ export async function submitRsvp(
       .filter((r) => r.status === "accepted")
       .map((r) => r.eventId);
 
+    const itineraryUrl = accepted.length > 0
+      ? await generateSignedUrl(guestId)
+      : undefined;
+
     sendTransactionalEmail({
       to: { email: guest.email, name: guest.name },
       templateId: TEMPLATES.RSVP_CONFIRMATION,
@@ -289,6 +294,7 @@ export async function submitRsvp(
         guestName: guest.name,
         acceptedCount: accepted.length,
         totalEvents: responses.length,
+        itineraryUrl,
       },
     }).then(async (messageId) => {
       if (messageId) {

@@ -78,6 +78,24 @@ export interface EmailLog {
   status: EmailStatus;
 }
 
+/* ── Phase 4: Itinerary types ── */
+
+export interface ItineraryEvent {
+  event: Event;
+  rsvp: Rsvp;
+}
+
+export interface ItineraryDay {
+  date: string;
+  label: string;
+  events: ItineraryEvent[];
+}
+
+export interface Itinerary {
+  guest: Guest;
+  days: ItineraryDay[];
+}
+
 /* ── Phase 3: RSVP flow types ── */
 
 export interface GuestLookupResult {
